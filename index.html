@@ -54,6 +54,8 @@
                     },
                 });
 
+                console.log(token);
+
                 if (!response.ok) {
                     throw new Error(`Error fetching folder contents: ${response.status}`);
                 }
