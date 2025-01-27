@@ -15,7 +15,7 @@ jobs:
 
       - name: Replace Token Placeholder
         env:
-          GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
+          GITHUB_PAT: ${{ secrets.PAT }}
         run: |
           sed -i "s/__GITHUB_PAT__/${GITHUB_PAT}/g" index.html
 
