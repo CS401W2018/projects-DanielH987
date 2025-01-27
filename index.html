@@ -37,25 +37,26 @@
     <ul id="file-list"></ul>
 
     <script>
-        // const token = process.env.GITHUB_TOKEN;
         const repo = "projects-DanielH987"; // Replace with your repository name
         const user = "cs401w2018"; // Replace with your GitHub username
         const apiBase = `https://api.github.com/repos/${user}/${repo}/contents/`;
 
+        // The token will be injected at deployment time
+        const token = "__GITHUB_PAT__";
+
         const fileList = document.getElementById('file-list');
 
-        // Recursive function to fetch folder contents and build the UI
         async function fetchFolderContents(folder = "", parentElement = fileList) {
             try {
-                const tokenResponse = await fetch('token.js');
-                const tokenScript = await tokenResponse.text();
-                eval(tokenScript); // Injects `const token` dynamically
-
                 const response = await fetch(`${apiBase}${folder}`, {
                     headers: {
                         Authorization: `token ${token}`,
                     },
                 });
+
+                if (!response.ok) {
+                    throw new Error(`Error fetching folder contents: ${response.status}`);
+                }
 
                 const data = await response.json();
 
