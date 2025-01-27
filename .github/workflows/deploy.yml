@@ -8,15 +8,19 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Build and Deploy
+      - name: Replace Token Placeholder
         env:
           GITHUB_PAT: ${{ secrets.PAT }}
         run: |
-          # Replace this with your build and deployment process
-          echo "const token = '${GITHUB_PAT}';" > token.js
-          # Deploy to GitHub Pages (or build the project if needed)
-          echo "Token injected into token.js"
+          sed -i "s/__GITHUB_PAT__/${GITHUB_PAT}/g" index.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
