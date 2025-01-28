@@ -37,12 +37,9 @@
     <ul id="file-list"></ul>
 
     <script>
-        const repo = "projects-DanielH987"; // Replace with your repository name
-        const user = "cs401w2018"; // Replace with your GitHub username
+        const repo = "projects-DanielH987";
+        const user = "cs401w2018"; 
         const apiBase = `https://api.github.com/repos/${user}/${repo}/contents/`;
-
-        // The token will be injected at deployment time
-        const token = "__GITHUB_PAT__";
 
         const fileList = document.getElementById('file-list');
 
