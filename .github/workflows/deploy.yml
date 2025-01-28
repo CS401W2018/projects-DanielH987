@@ -35,7 +35,6 @@ jobs:
 
       - name: Move and Commit Data
         run: |
-          mv -f repo_data.json repo_data.json  # Ensure file move does not cause issues
           git add repo_data.json
           git commit -m "Update repo contents" || echo "No changes to commit"
           git push origin gh-pages
