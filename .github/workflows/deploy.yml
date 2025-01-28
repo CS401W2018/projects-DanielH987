@@ -11,6 +11,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: List build directory
+        run: ls -la ./build
+        
       - name: Inject Token
         run: |
           echo "window.TOKEN = '${{ secrets.PAT }}';" > token.js
