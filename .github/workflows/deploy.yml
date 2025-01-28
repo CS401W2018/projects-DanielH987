@@ -1,25 +1,24 @@
 name: Deploy to GitHub Pages
+
 on:
   push:
     branches:
-      - main  # Adjust based on your default branch
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
 
-      - name: List build directory
-        run: ls -la ./build  # Check the contents of the build directory
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Inject Token
         run: |
-          echo "window.TOKEN = '${{ secrets.PAT }}';" > ./build/token.js  # Ensure token.js is in the build directory
+          echo "window.TOKEN = '${{ secrets.PAT }}';" > token.js
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build  
+          publish_dir: .  # Use the root directory as the publish directory
