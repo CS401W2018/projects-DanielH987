@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Fetch GitHub Repo Contents
 
 on:
   push:
@@ -13,12 +13,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Inject Token
+      - name: Fetch Repo Contents
         run: |
-          echo "window.TOKEN = '${{ secrets.PAT }}';" > token.js
+          curl -H "Authorization: token ${{ secrets.PAT }}" \
+               -H "Accept: application/vnd.github.v3+json" \
+               https://api.github.com/repos/cs401w2018/projects-DanielH987/contents/ > repo_data.json
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .  # Use the root directory as the publish directory
+      - name: Push Data to gh-pages
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "github-actions"
+          git checkout gh-pages || git checkout -b gh-pages
+          mv repo_data.json .
+          git add repo_data.json
+          git commit -m "Update repo contents"
+          git push origin gh-pages
