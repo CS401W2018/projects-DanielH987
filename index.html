@@ -36,11 +36,14 @@
     <h1>Folder Contents</h1>
     <ul id="file-list"></ul>
 
+    <script src="token.js"></script>
+
     <script>
         const repo = "projects-DanielH987";
         const user = "cs401w2018"; 
         const apiBase = `https://api.github.com/repos/${user}/${repo}/contents/`;
-        const token = "__PLACEHOLDER__";
+        const token = window.TOKEN;
+        console.log('GitHub token:', token);
 
         const fileList = document.getElementById('file-list');
 
