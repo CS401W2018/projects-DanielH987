@@ -56,7 +56,7 @@
         function createTreeLine(name, depth, isFolder) {
             const treeLine = document.createElement('span');
             treeLine.classList.add('tree-line');
-            treeLine.textContent = `${'│   '.repeat(depth)}├───${name}`;
+            treeLine.textContent = `├───${name}`;
             treeLine.style.color = isFolder ? '#1a73e8' : '#555';
             return treeLine;
         }
