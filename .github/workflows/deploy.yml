@@ -13,35 +13,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Fetch Full Repo Contents
+      - name: Fetch Repo Contents
         run: |
-          # Fetch and store full repo contents recursively
-          echo '[]' > repo_data.json  # Initialize empty JSON array
-      
-          fetch_contents() {
-            local url=$1
-            local token="${{ secrets.PAT }}"
-            
-            # Get contents from the given URL and add to repo_data.json
-            curl -s -H "Authorization: token $token" \
-                    -H "Accept: application/vnd.github.v3+json" \
-                    "$url" | jq -c '.[]' >> repo_data.json
-            
-            # Iterate over directories and recursively fetch contents
-            curl -s -H "Authorization: token $token" \
-                    -H "Accept: application/vnd.github.v3+json" \
-                    "$url" | jq -c '.[] | select(.type=="dir")' | while read dir; do
-              dir_url=$(echo "$dir" | jq -r '.url')
-              fetch_contents "$dir_url"
-            done
-          }
-      
-          # Start fetching from the root of the repo
-          fetch_contents "https://api.github.com/repos/CS401W2018/projects-DanielH987/contents/"
-          
-          # Format JSON as an array (not one object per line)
-          jq -s '.' repo_data.json > formatted_repo_data.json
-          mv formatted_repo_data.json repo_data.json      
+          curl -H "Authorization: token ${{ secrets.PAT }}" \
+                -H "Accept: application/vnd.github.v3+json" \
+                https://api.github.com/repos/cs401w2018/projects-DanielH987/git/trees/main?recursive=1 > repo_data.json
 
       - name: Set up Git Config
         run: |
