@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic File Listing</title>
+    <title>Dynamic File Tree</title>
     <style>
         body {
             font-family: 'Courier New', Courier, monospace;
@@ -15,100 +15,79 @@
         h1 {
             color: #1a73e8;
         }
-        ul {
-            list-style-type: none;
-            padding-left: 20px;
-            margin: 0;
-        }
-        li {
-            margin: 5px 0;
-        }
-        .folder {
-            font-weight: bold;
-            color: #1a73e8;
-        }
-        .file {
-            color: #555;
-            margin-left: 20px;
+        pre {
+            white-space: pre-wrap;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
         }
         a {
+            color: #1a73e8;
             text-decoration: none;
-            color: inherit;
-            transition: color 0.2s;
         }
         a:hover {
-            color: #1a73e8;
             text-decoration: underline;
-        }
-        .tree-line {
-            white-space: pre;
         }
     </style>
 </head>
 <body>
     <h1>Folder Contents</h1>
-    <ul id="file-list" class="tree"></ul>
+    <pre id="file-list"></pre>
 
     <script>
-        const fileList = document.getElementById('file-list');
-    
-        // Helper function to create a tree line
-        function createTreeLine(name, depth, isFolder) {
-            const treeLine = document.createElement('span');
-            treeLine.classList.add('tree-line');
-            treeLine.textContent = `├───${name}`;
-            treeLine.style.color = isFolder ? '#1a73e8' : '#555';
-            return treeLine;
-        }
-    
-        async function fetchFolderContents(filePath = "repo_data.json", parentElement = fileList, depth = 0) {
+        async function fetchFolderContents(filePath = "repo_data.json") {
             try {
                 const response = await fetch(filePath);
                 const data = await response.json();
-    
-                for (const item of data) {
-                    // Skip ".keep" files and the ".github" folder
-                    if (item.name === ".keep" || item.name === ".github" || item.name === "README.md" || item.name === "index.html") {
-                        continue;
-                    }
-    
-                    const li = document.createElement('li');
-    
-                    if (item.type === "dir") {
-                        // Create folder tree line
-                        const treeLine = createTreeLine(item.name, depth, true);
-                        li.classList.add('folder');
-                        li.appendChild(treeLine);
-                        parentElement.appendChild(li);
-    
-                        const subList = document.createElement('ul');
-                        subList.classList.add('tree');
-                        li.appendChild(subList);
-    
-                        // Recursive call to fetch folder contents
-                        await fetchFolderContents(item.url, subList, depth + 1);
-                    } else if (item.type === "file") {
-                        // Skip ".keep" files (just to ensure redundancy)
-                        if (item.name === ".keep") {
-                            continue;
+                const folderMap = {};
+
+                // Build a nested folder structure
+                for (const item of data.tree) {
+                    const parts = item.path.split('/');
+                    let current = folderMap;
+
+                    for (let i = 0; i < parts.length; i++) {
+                        if (!current[parts[i]]) {
+                            current[parts[i]] = i === parts.length - 1 && item.type === 'blob'
+                                ? item.path  // Store the full path for files
+                                : {};
                         }
-    
-                        // Create file tree line
-                        const treeLine = createTreeLine(item.name, depth, false);
-                        const fileLink = document.createElement('a');
-                        fileLink.href = item.path;
-                        fileLink.appendChild(treeLine);
-                        li.classList.add('file');
-                        li.appendChild(fileLink);
-                        parentElement.appendChild(li);
+                        current = current[parts[i]];
                     }
                 }
+
+                // Recursive function to build the tree text representation
+                function buildTreeText(structure, prefix = '') {
+                    let treeText = '';
+
+                    const entries = Object.entries(structure);
+                    entries.forEach(([key, value], index) => {
+                        const isLast = index === entries.length - 1;
+                        const line = isLast ? '└── ' : '├── ';
+
+                        if (typeof value === 'string') {
+                            // If it's a file, create a link
+                            treeText += `${prefix}${line}<a href="${value}">${key}</a>\n`;
+                        } else {
+                            // If it's a folder, just display its name
+                            treeText += `${prefix}${line}${key}\n`;
+                            const newPrefix = isLast ? `${prefix}    ` : `${prefix}│   `;
+                            treeText += buildTreeText(value, newPrefix);
+                        }
+                    });
+
+                    return treeText;
+                }
+
+                // Build and display the tree
+                const treeOutput = '/' + '\n' + buildTreeText(folderMap);
+                document.getElementById('file-list').innerHTML = treeOutput; // Set as innerHTML to render links
             } catch (err) {
                 console.error("Error fetching folder contents:", err);
             }
         }
 
-        // Initialize fetching from the local JSON file
+        // Initialize fetching and building the tree
         fetchFolderContents("repo_data.json");
     </script>
 </body>
