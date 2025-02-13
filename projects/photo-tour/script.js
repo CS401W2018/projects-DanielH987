@@ -2,6 +2,7 @@
 document.getElementById("header").innerHTML = `
     <header>
         <h1>French Polynesia Photo Tour</h1>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
     </header>
 `;
 
@@ -18,9 +19,25 @@ document.getElementById("nav").innerHTML = `
     </nav>
 
 `;
+document.addEventListener("DOMContentLoaded", function () {
+    let currentLocation = window.location.pathname.split("/").pop(); // Get current filename
+    let navLinks = document.querySelectorAll("nav a");
+
+    navLinks.forEach(link => {
+        if (link.getAttribute("href") === currentLocation) {
+            link.classList.add("active");
+        }
+    });
+});
 
 document.getElementById("footer").innerHTML = `
     <footer>
         <p>&copy; 2025 Daniel Hootini</p>
     </footer>
 `;
+
+const favicon = document.createElement("link");
+favicon.rel = "icon";
+favicon.type = "image/x-icon";
+favicon.href = "./images/favicon.ico";
+document.head.appendChild(favicon);
