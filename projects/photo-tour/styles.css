@@ -1,22 +1,86 @@
+/* Import a tropical-style Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;700&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #FFFAE3; /* Warm sandy background */
+    color: #333; /* Dark text for readability */
 }
 
-header, nav, footer {
-    text-align: center;
-    padding: 15px;
-    background-color: #333;
+/* HEADER */
+header {
+    font-family: 'Pacifico', cursive; /* Tropical feel */
+    background: linear-gradient(to right, #FF7E5F, #FEB47B); /* Sunset colors */
     color: white;
+    text-align: center;
+    padding: 25px 0;
+    font-size: 2rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* NAVIGATION */
+nav {
+    text-align: center;
+    background-color: #028A5E; /* Tropical green */
+    padding: 15px;
 }
 
 nav a {
     margin: 0 15px;
     color: white;
     text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: color 0.3s ease-in-out;
 }
 
-main {
-    padding: 20px;
+nav a:hover {
+    color: #FFD700; /* Golden highlight */
 }
+
+/* HIGHLIGHT CURRENT PAGE */
+nav a.active {
+    color: #FFD700;
+    text-decoration: underline;
+}
+
+/* MAIN CONTENT */
+main {
+    padding: 30px;
+    text-align: center;
+}
+
+/* FOOTER */
+footer {
+    background: #028A5E;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* LIST STYLING */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    font-size: 1.2rem;
+    padding: 10px 0;
+    background: url('images/bullet.png') no-repeat left center;
+    background-size: 20px;
+    padding-left: 30px;
+}
+
+/* BACKGROUND IMAGES */
+body {
+    background-image: url('images/texture.jpg');
+    background-repeat: repeat-x;
+}
+
