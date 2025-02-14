@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model</title>
+    <link rel="stylesheet" href="boxmodel.css">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <h1>Web Design Page</h1>
+        <nav>
+            <a href="/">About</a> | 
+            <a href="#">Services</a> | 
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Box Model</h2>
+        <p>
+            <strong>Question 1: What is the difference between block tags and inline tags?</strong>
+            <br>
+            Block tags take up the full width available and start on a new line, while inline tags take up only as much width as necessary and do not start on a new line.
+        </p>
+        <p>
+            <strong>Question 2: What is the margin, border, and padding?</strong>
+            <br>
+            Margin is the space outside the border of an element, border is the line surrounding the padding and content, and padding is the space between the content and the border.
+        </p>
+        <p>
+            <strong>Question 3: What are units of measurement you can use in CSS?</strong>
+            <br>
+            Units of measurement in CSS include pixels (px), ems (em), rems (rem), percentages (%), viewport width (vw), viewport height (vh), and more.
+        </p>
+        <p>
+            <strong>Question 4: When would you use a figure tag?</strong>
+            <br>
+            The figure tag is used to group media content (like images, illustrations, diagrams, etc.) along with their captions, making it easier to associate them together.
+        </p>
+
+        <hr>
+
+        <section>
+            <h3>Block vs Inline Elements</h3>
+            <p>
+                <strong>Block tags:</strong> Take up the full width available and start on a new line.<br>
+                <strong>Inline tags:</strong> Take up only as much width as necessary and do not start on a new line.
+            </p>
+            <div class="example">
+                <p class="block-example">This is a block-level element (div).</p>
+                <span class="inline-example">This is an inline element (span).</span>
+            </div>
+        </section>
+
+        <section>
+            <h3>Margin, Border, and Padding</h3>
+            <p>These are the key components of the CSS box model:</p>
+            <ul>
+                <li><strong>Margin:</strong> Space outside the border of an element.</li>
+                <li><strong>Border:</strong> The line surrounding the padding and content.</li>
+                <li><strong>Padding:</strong> Space between the content and the border.</li>
+            </ul>
+            <div class="box-example">Box Model Example</div>
+        </section>
+
+        <section>
+            <h3>Units of Measurement</h3>
+            <p>CSS supports various units such as:</p>
+            <ul>
+                <li><code>px</code> - Absolute pixels</li>
+                <li><code>em</code> - Relative to the font size of the element</li>
+                <li><code>rem</code> - Relative to the root font size</li>
+                <li><code>%</code> - Percentage relative to the parent element</li>
+                <li><code>vw</code> - Viewport width</li>
+                <li><code>vh</code> - Viewport height</li>
+            </ul>
+            <div class="unit-example">This box uses different CSS units.</div>
+        </section>
+
+        <section>
+            <h3>Figure Tag Example</h3>
+            <figure>
+                <img src="example-image.jpeg" alt="Example Image" class="figure-img">
+                <figcaption>This is an example of a figure tag.</figcaption>
+            </figure>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Daniel Hootini</p>
+    </footer>
+</body>
+</html>
