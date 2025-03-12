@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tables</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: black;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -32,9 +50,24 @@
             <br>
             Extra work is needed for table accessibility when the table is complex, such as when it has multiple levels of headers, merged cells, or requires additional context for screen readers.
         </p>
+        <p>
+            <strong>Question 4: Why don't we use the border attribute?</strong>
+            <br>
+            The border attribute is outdated and should be avoided. Instead, we use CSS to style table borders for better control and separation of content and presentation.
+        </p>
+        <p>
+            <strong>Question 5: What is the easiest way to color every other row a different color?</strong>
+            <br>
+            The easiest way to color every other row a different color is by using the CSS <code>:nth-child</code> pseudo-class. For example:
+            <pre><code>
+            table tr:nth-child(even) {
+            background-color: #f2f2f2;
+            }
+            </code></pre>
+        </p>
 
         <h3>Example of a Simple Table</h3>
-        <table border="1">
+        <table>
             <caption>Monthly Sales Data</caption>
             <thead>
                 <tr>
