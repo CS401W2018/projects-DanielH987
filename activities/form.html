@@ -5,6 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #555;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -31,7 +61,32 @@
             <strong>Question 3: What is the difference between a "POST" and a "GET"?</strong>
             <br>
             "GET" sends form data as URL parameters and is typically used for retrieving data, while "POST" sends data in the request body, making it more secure for sensitive information and commonly used for creating or updating resources.
-        </p>        
+        </p>
+        <p>
+            <strong>Question 4: What are different ways to style your form?</strong>
+            <br>
+            There are several ways to style your form, including using CSS for layout and design, applying frameworks like Bootstrap for responsive design, and using custom JavaScript for dynamic styling and validation.
+        </p>
+        <p>
+            <strong>Question 5: Why does the professor like to use flex?</strong>
+            <br>
+            Brother Slade likes to use flex because the CSS Flexbox layout model provides a more efficient way to lay out, align, and distribute space among items in a container, even when their size is unknown or dynamic.
+        </p>
+        
+        <h2>Example Form</h2>
+        <form action="submit-form.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+        <br>
     </main>
     <footer>
         <p>&copy; 2025 Daniel Hootini</p>
