@@ -11,7 +11,7 @@ body {
 /* Header & Footer */
 header,
 footer {
-  background-color: #3b82f6;
+  background-color: #333;
   color: white;
   text-align: center;
   padding: 1em;
@@ -34,10 +34,10 @@ main {
 }
 
 form fieldset {
-  border: 2px solid #3b82f6;
+  border: 2px solid #333;
   padding: 1.5em;
   border-radius: 8px;
-  background-color: #f0f4ff;
+  background-color: #f4f4f4;
 }
 
 legend {
@@ -67,7 +67,7 @@ select {
   padding: 0.5em;
   border-radius: 5px;
   border: 1px solid #ccc;
-  background-color: #e0ecff;
+  background-color: #eee;
 }
 
 /* Radio buttons and checkboxes */
@@ -83,7 +83,7 @@ select {
 
 /* Submit button */
 button[type="submit"] {
-  background-color: #2563eb;
+  background-color: #444444;
   color: white;
   border: none;
   padding: 0.7em 1.5em;
@@ -91,10 +91,12 @@ button[type="submit"] {
   border-radius: 6px;
   cursor: pointer;
   margin-top: 1em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-  background-color: #1e40af;
+  background-color: #222222;
+  transform: scale(1.02);
 }
 
 /* Responsive styles */
