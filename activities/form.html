@@ -1,95 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <style>
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        label {
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            margin-top: 15px;
-            padding: 10px 20px;
-            background: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #555;
-        }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        width: 50%;
+      }
+      label {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      input,
+      textarea {
+        width: 90%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        margin-top: 15px;
+        padding: 10px 20px;
+        background: #333;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #555;
+      }
+      .centered {
+        margin: 0 auto;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Web Design Page</h1>
-        <nav>
-            <a href="/">About</a> | 
-            <a href="#">Services</a> | 
-            <a href="#">Contact</a>
-        </nav>
+      <h1>Web Design Page</h1>
+      <nav>
+        <a href="/">About</a> | <a href="#">Services</a> |
+        <a href="#">Contact</a>
+      </nav>
     </header>
     <main>
-        <h2>Form</h2>
-        <p>
-            <strong>Question 1: The form tag has an "action" attribute. What does it do?</strong>
-            <br>
-            The "action" attribute in a form tag specifies the URL to which the form data will be sent when the form is submitted.
-        </p>
-        <p>
-            <strong>Question 2: The form tag has a "method" attribute. What does it do?</strong>
-            <br>
-            The "method" attribute in a form tag defines the HTTP method used to send form data to the server. The common values are "GET" and "POST".
-        </p>
-        <p>
-            <strong>Question 3: What is the difference between a "POST" and a "GET"?</strong>
-            <br>
-            "GET" sends form data as URL parameters and is typically used for retrieving data, while "POST" sends data in the request body, making it more secure for sensitive information and commonly used for creating or updating resources.
-        </p>
-        <p>
-            <strong>Question 4: What are different ways to style your form?</strong>
-            <br>
-            There are several ways to style your form, including using CSS for layout and design, applying frameworks like Bootstrap for responsive design, and using custom JavaScript for dynamic styling and validation.
-        </p>
-        <p>
-            <strong>Question 5: Why does the professor like to use flex?</strong>
-            <br>
-            Brother Slade likes to use flex because the CSS Flexbox layout model provides a more efficient way to lay out, align, and distribute space among items in a container, even when their size is unknown or dynamic.
-        </p>
-        
-        <h2>Example Form</h2>
-        <form action="submit-form.php" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <br>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-            <br>
-            <button type="submit">Submit</button>
-        </form>
-        <br>
+      <h2>Form</h2>
+      <p>
+        <strong
+          >Question 1: The form tag has an "action" attribute. What does it
+          do?</strong
+        >
+        <br />
+        The "action" attribute in a form tag specifies the URL to which the form
+        data will be sent when the form is submitted.
+      </p>
+      <p>
+        <strong
+          >Question 2: The form tag has a "method" attribute. What does it
+          do?</strong
+        >
+        <br />
+        The "method" attribute in a form tag defines the HTTP method used to
+        send form data to the server. The common values are "GET" and "POST".
+      </p>
+      <p>
+        <strong
+          >Question 3: What is the difference between a "POST" and a
+          "GET"?</strong
+        >
+        <br />
+        "GET" sends form data as URL parameters and is typically used for
+        retrieving data, while "POST" sends data in the request body, making it
+        more secure for sensitive information and commonly used for creating or
+        updating resources.
+      </p>
+      <p>
+        <strong>Question 4: What are different ways to style your form?</strong>
+        <br />
+        There are several ways to style your form, including using CSS for
+        layout and design, applying frameworks like Bootstrap for responsive
+        design, and using custom JavaScript for dynamic styling and validation.
+      </p>
+      <p>
+        <strong>Question 5: Why does the professor like to use flex?</strong>
+        <br />
+        Brother Slade likes to use flex because the CSS Flexbox layout model
+        provides a more efficient way to lay out, align, and distribute space
+        among items in a container, even when their size is unknown or dynamic.
+      </p>
+      <p>
+        <strong
+          >Question 6: What is JavaScript? How did it get its name?</strong
+        >
+        <br />
+        JavaScript is a versatile programming language primarily used for
+        creating interactive and dynamic content on websites. It was originally
+        named Mocha, then renamed to LiveScript, and finally to JavaScript to
+        capitalize on the popularity of Java at the time.
+      </p>
+      <p>
+        <strong
+          >Question 7: What are the two ways you can run JavaScript?</strong
+        >
+        <br />
+        JavaScript can be run in a web browser, where it is executed by the
+        browser's JavaScript engine, or on a server using environments like
+        Node.js.
+      </p>
+      <p>
+        <strong
+          >Question 8: What was the most popular front-end js library?</strong
+        >
+        <br />
+        jQuery was the most popular front-end JavaScript library for many years
+        due to its simplicity and cross-browser compatibility.
+      </p>
+      <p>
+        <strong
+          >Question 9: What is the most popular front-end js library
+          today?</strong
+        >
+        <br />
+        React is currently the most popular front-end JavaScript library, widely
+        used for building user interfaces and single-page applications.
+      </p>
+
+      <form action="submit-form.php" method="post">
+        <fieldset>
+          <legend><h2>Example Form</h2></legend>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+          <br />
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+          <br />
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+          <br />
+          <button type="submit">Submit</button>
+        </fieldset>
+      </form>
+      <br />
     </main>
     <footer>
-        <p>&copy; 2025 Daniel Hootini</p>
+      <p>&copy; 2025 Daniel Hootini</p>
     </footer>
-</body>
+
+    <script>
+      const form = document.querySelector("form");
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value;
+        alert("Hello, " + name + "! Thank you for your message.");
+
+        form.reset();
+      });
+    </script>
+  </body>
 </html>
