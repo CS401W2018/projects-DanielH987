@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+        .grid-item {
+            background-color: #2196F3;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Web Design Page</h1>
+        <nav>
+            <a href="/">About</a> | 
+            <a href="#">Services</a> | 
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Grid</h2>
+        <p>
+            <strong>Question 1: What should you focus on during class and after class?</strong>
+            <br>
+            During class, we should follow along with the instructor. After class, we should experiment with the concepts learned and practice by working on projects or exercises.
+        </p>
+        <p>
+            <strong>Question 2: What is the main difference between CSS Grid and CSS Flex?</strong>
+            <br>
+            CSS Grid is designed for two-dimensional layout - rows and columns, while CSS Flexbox is designed for one-dimensional layout - either a row or a column.
+        </p>
+        <h3>CSS Grid Example</h3>
+        <div class="grid-container">
+            <div class="grid-item">1</div>
+            <div class="grid-item">2</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+            <div class="grid-item">5</div>
+            <div class="grid-item">6</div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Daniel Hootini</p>
+    </footer>
+</body>
+</html>

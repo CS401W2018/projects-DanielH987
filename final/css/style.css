@@ -1,0 +1,103 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
+}
+
+header {
+  background: #005073;
+  color: #fff;
+  padding: 1em;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: #007aaf;
+}
+
+nav a {
+  padding: 1em;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  flex: 1;
+  min-width: 120px;
+}
+
+nav a:hover,
+nav a.active {
+  background-color: #00435f;
+}
+
+main {
+  padding: 1em;
+  max-width: 900px;
+  margin: auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ccc;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+}
+
+caption {
+  caption-side: top;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.bookshelf {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.book {
+  width: 150px;
+  height: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.book:hover {
+  transform: translateY(-15px) rotateZ(-2deg) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+  }
+
+  nav a {
+    background: #007aaf;
+    border-bottom: 1px solid #00435f;
+  }
+}
