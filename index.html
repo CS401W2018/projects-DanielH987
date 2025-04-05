@@ -51,55 +51,60 @@
                 const response = await fetch(filePath);
                 const data = await response.json();
                 const folderMap = {};
-
+    
                 // Build a nested folder structure
                 for (const item of data.tree) {
                     const parts = item.path.split('/');
                     let current = folderMap;
-
+    
                     for (let i = 0; i < parts.length; i++) {
                         if (!current[parts[i]]) {
                             current[parts[i]] = i === parts.length - 1 && item.type === 'blob'
-                                ? item.path  // Store the full path for files
+                                ? item.path
                                 : {};
                         }
                         current = current[parts[i]];
                     }
                 }
-
-                // Recursive function to build the tree text representation
-                function buildTreeText(structure, prefix = '') {
-                    let treeText = '';
-
+    
+                function buildTreeHTML(structure, prefix = '', isLast = true) {
                     const entries = Object.entries(structure);
+                    let html = '';
+    
                     entries.forEach(([key, value], index) => {
-                        const isLast = index === entries.length - 1;
-                        const line = isLast ? '└── ' : '├── ';
-
+                        const last = index === entries.length - 1;
+                        const line = last ? '└── ' : '├── ';
+                        const newPrefix = last ? `${prefix}    ` : `${prefix}│   `;
+    
                         if (typeof value === 'string') {
-                            // If it's a file, create a link
-                            treeText += `${prefix}${line}<a href="${value}">${key}</a>\n`;
+                            // File
+                            html += `${prefix}${line}<a href="${value}">${key}</a>\n`;
                         } else {
-                            // If it's a folder, just display its name
-                            treeText += `${prefix}${line}${key}\n`;
-                            const newPrefix = isLast ? `${prefix}    ` : `${prefix}│   `;
-                            treeText += buildTreeText(value, newPrefix);
+                            // Folder
+                            const folderId = 'folder-' + Math.random().toString(36).substr(2, 9);
+                            html += `${prefix}${line}<span style="cursor: pointer;" onclick="toggleFolder('${folderId}', this)">▶ ${key}</span>\n`;
+                            html += `<div id="${folderId}" style="display: none;">${buildTreeHTML(value, newPrefix)}</div>`;
                         }
                     });
-
-                    return treeText;
+    
+                    return html;
                 }
-
-                // Build and display the tree
-                const treeOutput = '/' + '\n' + buildTreeText(folderMap);
-                document.getElementById('file-list').innerHTML = treeOutput; // Set as innerHTML to render links
+    
+                window.toggleFolder = function(id, el) {
+                    const div = document.getElementById(id);
+                    const isVisible = div.style.display !== 'none';
+                    div.style.display = isVisible ? 'none' : 'block';
+                    el.textContent = (isVisible ? '▶' : '▼') + el.textContent.slice(1);
+                };
+    
+                const treeOutput = '/' + '\n' + buildTreeHTML(folderMap);
+                document.getElementById('file-list').innerHTML = `<pre>${treeOutput}</pre>`;
             } catch (err) {
                 console.error("Error fetching folder contents:", err);
             }
         }
-
-        // Initialize fetching and building the tree
+    
         fetchFolderContents("repo_data.json");
-    </script>
+    </script>    
 </body>
 </html>
