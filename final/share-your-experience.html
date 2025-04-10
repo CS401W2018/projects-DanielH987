@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Share Your Experience - Survive CS at BYUH</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script defer src="js/form.js"></script>
+    <meta
+      name="description"
+      content="A form for BYUH CS students to share advice and experience."
+    />
+  </head>
+  <body>
+    <header>
+      <h1>🎓 Survive CS at BYUH</h1>
+    </header>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="best-professors.html">Best Professors</a>
+      <a href="hardest-classes.html">Hardest Classes</a>
+      <a href="tools.html">Tools</a>
+      <a href="share-your-experience.html" class="active">Share Experience</a>
+    </nav>
+
+    <main>
+      <h2>Share Your Survival Tips</h2>
+      <p>
+        Help future CS majors by sharing your experience! Tell us what class was
+        hardest and what helped you succeed.
+      </p>
+
+      <form id="adviceForm">
+        <label>
+          Name (optional):<br />
+          <input type="text" name="name" /> </label
+        ><br /><br />
+
+        <label>
+          Year in school:<br />
+          <select name="year">
+            <option value="Freshman">Freshman</option>
+            <option value="Sophomore">Sophomore</option>
+            <option value="Junior">Junior</option>
+            <option value="Senior">Senior</option>
+          </select> </label
+        ><br /><br />
+
+        <label>
+          Hardest class:<br />
+          <input type="text" name="hardestClass" required /> </label
+        ><br /><br />
+
+        <label>
+          Your top survival tip:<br />
+          <textarea name="tip" rows="5" required></textarea></label
+        ><br /><br />
+
+        <button type="submit">Submit Advice</button>
+      </form>
+
+      <div
+        id="confirmationMessage"
+        style="margin-top: 20px; font-weight: bold"
+      ></div>
+    </main>
+  </body>
+</html>
