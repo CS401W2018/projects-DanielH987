@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Web Design Page</h1>
+        <nav>
+            <a href="/">About</a> | 
+            <a href="#">Services</a> | 
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Tables</h2>
+        <p>
+            <strong>Question 1: When do you use a table?</strong>
+            <br>
+            Tables should be used to display tabular data, where data is organized in rows and columns.
+        </p>
+        <p>
+            <strong>Question 2: When do you not use a table?</strong>
+            <br>
+            Tables should not be used for layout purposes. We use CSS for layout instead.
+        </p>
+        <p>
+            <strong>Question 3: When do you need to do extra work for table accessibility?</strong>
+            <br>
+            Extra work is needed for table accessibility when the table is complex, such as when it has multiple levels of headers, merged cells, or requires additional context for screen readers.
+        </p>
+        <p>
+            <strong>Question 4: Why don't we use the border attribute?</strong>
+            <br>
+            The border attribute is outdated and should be avoided. Instead, we use CSS to style table borders for better control and separation of content and presentation.
+        </p>
+        <p>
+            <strong>Question 5: What is the easiest way to color every other row a different color?</strong>
+            <br>
+            The easiest way to color every other row a different color is by using the CSS <code>:nth-child</code> pseudo-class. For example:
+            <pre><code>
+            table tr:nth-child(even) {
+            background-color: #f2f2f2;
+            }
+            </code></pre>
+        </p>
+
+        <h3>Example of a Simple Table</h3>
+        <table>
+            <caption>Monthly Sales Data</caption>
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>Sales</th>
+                    <th>Profit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>January</td>
+                    <td>$10,000</td>
+                    <td>$3,000</td>
+                </tr>
+                <tr>
+                    <td>February</td>
+                    <td>$12,000</td>
+                    <td>$3,500</td>
+                </tr>
+                <tr>
+                    <td>March</td>
+                    <td>$9,000</td>
+                    <td>$2,800</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2025 Daniel Hootini</p>
+    </footer>
+</body>
+</html>

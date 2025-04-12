@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic File Tree</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #1a73e8;
+        }
+        pre {
+            white-space: pre-wrap;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        code {
+            background-color: #eaeaea;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>CS 140</h1>
+    <h2>CS 140 Projects</h2>
+    <p>Put all assignments in the correct folder. Remember to not use spaces in your file or folder names.</p>
+    <p>Put all activities in the <code>activities</code> folder. All projects in the <code>projects</code> folder. All final project assignments go in the <code>final</code> folder.</p>
+
+    <h1>Folder Contents</h1>
+    <pre id="file-list"></pre>
+
+    <script>
+        async function fetchFolderContents(filePath = "repo_data.json") {
+            try {
+                const response = await fetch(filePath);
+                const data = await response.json();
+                const folderMap = {};
+    
+                // Build a nested folder structure
+                for (const item of data.tree) {
+                    const parts = item.path.split('/');
+                    let current = folderMap;
+    
+                    for (let i = 0; i < parts.length; i++) {
+                        if (!current[parts[i]]) {
+                            current[parts[i]] = i === parts.length - 1 && item.type === 'blob'
+                                ? item.path
+                                : {};
+                        }
+                        current = current[parts[i]];
+                    }
+                }
+    
+                function buildTreeHTML(structure, prefix = '', isLast = true) {
+                    const entries = Object.entries(structure);
+                    let html = '';
+    
+                    entries.forEach(([key, value], index) => {
+                        const last = index === entries.length - 1;
+                        const line = last ? '└── ' : '├── ';
+                        const newPrefix = last ? `${prefix}    ` : `${prefix}│   `;
+    
+                        if (typeof value === 'string') {
+                            // File
+                            html += `${prefix}${line}<a href="${value}">${key}</a>\n`;
+                        } else {
+                            // Folder
+                            const folderId = 'folder-' + Math.random().toString(36).substr(2, 9);
+                            html += `${prefix}${line}<span style="cursor: pointer;" onclick="toggleFolder('${folderId}', this)">▶ ${key}</span>\n`;
+                            html += `<div id="${folderId}" style="display: none;">${buildTreeHTML(value, newPrefix)}</div>`;
+                        }
+                    });
+    
+                    return html;
+                }
+    
+                window.toggleFolder = function(id, el) {
+                    const div = document.getElementById(id);
+                    const isVisible = div.style.display !== 'none';
+                    div.style.display = isVisible ? 'none' : 'block';
+                    el.textContent = (isVisible ? '▶' : '▼') + el.textContent.slice(1);
+                };
+    
+                const treeOutput = '/' + '\n' + buildTreeHTML(folderMap);
+                document.getElementById('file-list').innerHTML = `<pre>${treeOutput}</pre>`;
+            } catch (err) {
+                console.error("Error fetching folder contents:", err);
+            }
+        }
+    
+        fetchFolderContents("repo_data.json");
+    </script>    
+</body>
+</html>

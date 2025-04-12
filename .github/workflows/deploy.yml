@@ -1,0 +1,40 @@
+name: Fetch GitHub Repo Contents
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Fetch Repo Contents
+        run: |
+          curl -H "Authorization: token ${{ secrets.PAT }}" \
+                -H "Accept: application/vnd.github.v3+json" \
+                https://api.github.com/repos/cs401w2018/projects-DanielH987/git/trees/main?recursive=1 > repo_data.json
+
+      - name: Set up Git Config
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "github-actions"
+
+      - name: Ensure gh-pages Exists
+        run: |
+          git fetch origin gh-pages || echo "No gh-pages branch yet"
+          if git show-ref --verify --quiet refs/heads/gh-pages; then
+            git checkout gh-pages
+          else
+            git checkout --orphan gh-pages
+          fi
+
+      - name: Commit and Push Data
+        run: |
+          git add repo_data.json
+          git commit -m "Update repo contents" || echo "No changes to commit"
+          git push --force origin gh-pages

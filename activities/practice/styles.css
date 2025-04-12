@@ -1,0 +1,74 @@
+/* CSS: Font, Font-size, text-align, Color, Background-color */
+body {
+  font-family: Arial, sans-serif; /* font */
+  font-size: 16px; /* font-size */
+  text-align: center; /* text-align */
+  background-color: #f9f9f9; /* background-color */
+  color: #333; /* color */
+  margin: 0; /* margin (box model) */
+  padding: 0; /* padding (box model) */
+}
+
+/* CLASS: .main-header */
+.main-header {
+  background-color: #4caf50;
+  color: white;
+  padding: 20px; /* padding (box model) */
+}
+
+/* CLASS: .nav-list using FLEX */
+.nav-list {
+  display: flex; /* flex */
+  justify-content: center; /* justify-content */
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav-list li {
+  margin: 0 10px; /* margin (box model) */
+}
+
+.nav-list a {
+  color: white;
+  text-decoration: none;
+}
+
+/* CLASS: .grid-container using GRID */
+.grid-container {
+  display: grid; /* grid */
+  grid-template-columns: repeat(3, 1fr); /* column template */
+  gap: 10px;
+  margin: 20px;
+  padding: 10px;
+}
+
+/* Children of grid layout (size controlled by grid) */
+.grid-item {
+  background-color: #ddd;
+  padding: 20px;
+  border: 2px solid #aaa; /* border (box model) */
+}
+
+/* CLASS: .flex-container using FLEX */
+.flex-container {
+  display: flex; /* flex */
+  flex-direction: row; /* direction */
+  justify-content: space-around; /* justify-content */
+  flex-wrap: wrap; /* flex wrap (makes it pseudo-2D) */
+  margin: 20px;
+}
+
+/* Children of flex layout (size determined by content) */
+.flex-item {
+  background-color: #eee;
+  padding: 20px;
+  margin: 5px;
+  border: 2px solid #bbb;
+}
+
+/* CLASS: .footer-text */
+.footer-text {
+  padding: 20px;
+  background-color: #333;
+  color: white;
+}

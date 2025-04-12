@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Flexbox Example */
+        .flex-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 20px;
+            background-color: #e0e0e0;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .flex-item {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Web Design Page</h1>
+        <nav>
+            <a href="/">About</a> | 
+            <a href="#">Services</a> | 
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Flex</h2>
+        <p>
+            <strong>Question 1: What did you learn about Flex and CSS?</strong>
+            <br>
+            Flexbox is a layout model in CSS that allows for the creation of complex layouts with ease. It provides a more efficient way to lay out, align, and distribute space among items in a container, even when their size is unknown or dynamic.
+        </p>
+
+        <h3>Flexbox Example</h3>
+        <div class="flex-container">
+            <div class="flex-item">Item 1</div>
+            <div class="flex-item">Item 2</div>
+            <div class="flex-item">Item 3</div>
+        </div>
+
+        <p>
+            <strong>Question 2: Why do you need to have an accessible website? What does that mean?</strong>
+            <br>
+            An accessible website ensures that all users, including those with disabilities, can access and use the site effectively. This means providing alternative text for images, ensuring proper contrast, enabling keyboard navigation, and using semantic HTML to improve the overall user experience.
+        </p>
+    </main>
+    <footer>
+        <p>&copy; 2025 Daniel Hootini</p>
+    </footer>
+</body>
+</html>
