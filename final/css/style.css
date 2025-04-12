@@ -150,6 +150,34 @@ form button:hover {
   margin-top: 20px;
 }
 
+iframe {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  margin-top: 1em;
+}
+
+.video-frame {
+  width: 560px;
+  height: 315px;
+  border: none;
+}
+
+footer {
+  background-color: #005073;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+  margin-top: 2em;
+  font-size: 0.9em;
+  border-top: 4px solid #00435f;
+}
+
+footer p {
+  margin: 0;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   nav {
